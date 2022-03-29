@@ -1,0 +1,6 @@
+name: What time is it
+on: [push]
+jobs:
+  Test-Github_Actions:
+    steps:
+      - run: date
