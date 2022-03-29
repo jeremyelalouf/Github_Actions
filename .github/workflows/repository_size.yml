@@ -1,0 +1,11 @@
+name: Repositery size
+on: [push]
+jobs:
+  Test-Github-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+      -run: echo "${GITHUB_REF#refs/heads/}"
+      -run: du -skh --exclude=".git"
