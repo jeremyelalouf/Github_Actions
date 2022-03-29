@@ -2,5 +2,6 @@ name: What time is it
 on: [push]
 jobs:
   Test-Github_Actions:
+    runs-on: arch_latest
     steps:
       - run: date
