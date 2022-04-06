@@ -1,7 +1,5 @@
 name: Repository Mirorring
-
 on: [push]
-
 jobs:
   to-github:
     runs-on: ubuntu-latest
