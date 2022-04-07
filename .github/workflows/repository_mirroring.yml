@@ -10,4 +10,4 @@ jobs:
           target_repo_url:
             git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-jeremy.elalouf.git
           ssh_private_key:
-            ${{ secrets.SSH_PRIVATE_KEY }}
+            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
