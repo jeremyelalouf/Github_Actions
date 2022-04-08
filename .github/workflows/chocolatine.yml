@@ -10,7 +10,7 @@ on:
 
 env:
   MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-jeremy.elalouf.git
-  EXECUTABLE: pushswap libmy.a
+  EXECUTABLE: pushswap,libmy.a
 
 jobs:
   check_repository_cleanliness:
@@ -55,8 +55,8 @@ jobs:
       - name : make clean
         run: |
           make clean
-          for i in ${!EXECUTABLE[@]}; do
-            FILE=$(find . -name "${EXECUTABLE[$i]}")
+          IFS=","
+          for FILE in ${EXECUTABLE}; do
             if [ ! -x "$FILE" ]; then
               exit 1
             fi
