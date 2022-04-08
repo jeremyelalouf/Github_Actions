@@ -22,6 +22,6 @@ jobs:
       - name: .o
         run: |
           FILE=$(find . -name *.o)
-          if [ -f "&FILE" ]; then
+          if [ -f "$FILE" ]; then
             echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
           fi
