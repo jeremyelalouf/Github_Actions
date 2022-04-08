@@ -19,12 +19,21 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: .o
+      - name: files
         run: |
-          files=("*.o" "*.a" "*.so" "*.gcno" "*.gcda" "*.gcov")
+          files=("*.o" "*.a" "*.so" "*.gcno" "*.gcda" "*.gcov" "#*#" "*~" "pain_au_chocolat")
           for i in ${!files[@]}; do
             FILE=$(find . -name ${files[$i]})
             if [ -f "$FILE" ]; then
+              echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
+            fi
+          done
+      - name: dir
+        run: |
+          dir=("tmp")
+          for i in ${!dir[@]}; do
+            FILE=$(find . -name ${dir[$i]})
+            if [ -d "$FILE" ]; then
               echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
             fi
           done
