@@ -60,3 +60,4 @@ jobs:
             if [ ! -f "$FILE" ] || [ ! -x "$FILE" ]; then
               exit 1
             fi
+          done
