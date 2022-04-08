@@ -57,6 +57,7 @@ jobs:
           make clean
           for i in ${!EXECUTABLE[@]}; do
             FILE=$(find . -name "${EXECUTABLE[$i]}")
+            echo $(FILE)
             if [ ! -f "$FILE" ] || [ ! -x "$FILE" ]; then
               exit 1
             fi
