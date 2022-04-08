@@ -35,10 +35,27 @@ jobs:
           fi
       - name: dir
         run: |
-          dir=("tmp")
-          for i in ${!dir[@]}; do
-            FILE=$(find . -name ${dir[$i]} | head -n 1)
-            if [ -d "$FILE" ]; then
-              echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
-            fi
-          done
+          check=0
+          FILE=$(find . -type d -name tmp | head -n 1)
+          if [ -d "$FILE" ]; then
+            echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
+            $check=1
+          fi
+          if [ $check == 1]; then
+            exit 1
+          fi
+  check_program_compilation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+      - name: make
+        run: make -C ../../
+      - name : make clean
+        run: make clean -C ../../
+        run: |
+          FILE=$(find . -name "${EXECUTABLE}")
+          if [ !-f "$FILE" ]; then
+            exit 1
+          fi
