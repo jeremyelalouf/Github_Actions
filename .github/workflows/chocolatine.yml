@@ -1,0 +1,27 @@
+name: Chocolatine
+
+on:
+  push:
+    branches-ignore:
+      - 'ga-ignore-**'
+  pull_request:
+    branches-ignore:
+      - 'ga-ignore-**'
+
+env:
+  MIRROR_URL: git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-1-chocolatine-jeremy.elalouf.git
+  EXECUTABLE: pushswap
+
+jobs:
+  check_repository_cleanliness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: .o
+        run: |
+          FILE=$(find . -name *.o)
+          if [ -f "&FILE" ]; then
+            echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
+          fi
