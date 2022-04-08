@@ -54,7 +54,7 @@ jobs:
         run: make
       - name : make clean
         run: |
-          make clean -C ../../
+          make clean
           FILE=$(find . -name "${EXECUTABLE}")
           if [ !-f "$FILE" ]; then
             exit 1
