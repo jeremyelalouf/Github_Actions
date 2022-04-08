@@ -30,10 +30,7 @@ jobs:
           done
       - name: dir
         run: |
-          dir=("tmp")
-          for i in ${!dir[@]}; do
-            FILE=$(find . -name ${dir[$i]})
-            if [ -d "$FILE" ]; then
-              echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
-            fi
-          done
+          FILE=$(find . -type d -name "tmp")
+          if [ -f "$FILE" ]; then
+            echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
+          fi
