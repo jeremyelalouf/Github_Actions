@@ -51,7 +51,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: make
-        run: make -C ../..
+        run: |
+          cd ../.. && make
+          cd -
       - name : make clean
         run: |
           make clean -C ../../
