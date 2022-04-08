@@ -67,7 +67,6 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	$(AR) $(NAME) $(OBJ)
-	chmod +x $(NAME)
 	$(CP) $(NAME) ../
 	$(CP) my.h ../../includes/
 	@echo -e "\e[92;5m MADE \e[0m"
