@@ -20,6 +20,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	$(CC) -o $(NAME) $(OBJ)
+	chmod -x $(NAME)
 	@echo -e "\e[92;5m MADE \e[0m"
 
 debug:	CPPFLAGS += -g3
