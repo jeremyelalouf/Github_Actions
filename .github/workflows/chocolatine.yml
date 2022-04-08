@@ -56,7 +56,6 @@ jobs:
         run: |
           make clean
           FILE=$(find . -name "${EXECUTABLE}")
-          echo $FILE
-          if [ ! -f "$FILE" ] && [ ! -x "$FILE"]; then
+          if [ ! -f "$FILE" ] || [ ! -x "$FILE"]; then
             exit 1
           fi
