@@ -14,11 +14,18 @@ OBJ			=		$(SRC:.c=.o)
 
 NAME_TEST	=		unit_tests
 
+CFLAGS		=		-Wall -Wextra
+
+CPPFLAGS	=		-I./includes
+
+LDFLAGS		=		-L./lib/my -lmy
+
 NAME		=		pushswap
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
+	make -C lib/my
 	$(CC) -o $(NAME) $(OBJ)
 	@echo -e "\e[92;5m MADE \e[0m"
 
@@ -29,10 +36,12 @@ debug_re:	CPPFLAGS += -g3
 debug_re:	re
 
 clean:
+	make clean -C lib/my
 	$(RM) $(OBJ)
 	@echo -e "\e[35mCLEANED\033[0m"
 
 fclean:	clean
+	make fclean -C lib/my
 	$(RM) $(NAME)
 	$(RM) $(NAME_TEST)
 	$(RM) *.gcno *.gcda
