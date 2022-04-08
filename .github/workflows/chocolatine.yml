@@ -44,6 +44,7 @@ jobs:
           if [ $check == 1]; then
             exit 1
           fi
+jobs:
   check_program_compilation:
     runs-on: ubuntu-latest
     steps:
