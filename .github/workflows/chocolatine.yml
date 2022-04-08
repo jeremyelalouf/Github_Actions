@@ -53,8 +53,8 @@ jobs:
       - name: make
         run: make -C ../../
       - name : make clean
-        run: make clean -C ../../
         run: |
+          make clean -C ../../
           FILE=$(find . -name "${EXECUTABLE}")
           if [ !-f "$FILE" ]; then
             exit 1
