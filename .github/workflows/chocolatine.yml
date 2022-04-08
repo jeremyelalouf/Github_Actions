@@ -28,9 +28,3 @@ jobs:
               echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
             fi
           done
-      - name: dir
-        run: |
-          FILE=$(find . -type d -name "tmp")
-          if [ -f "$FILE" ]; then
-            echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
-          fi
