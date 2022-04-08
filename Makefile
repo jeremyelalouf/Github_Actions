@@ -14,12 +14,6 @@ OBJ			=		$(SRC:.c=.o)
 
 NAME_TEST	=		unit_tests
 
-CFLAGS		=		-Wall -Wextra
-
-CPPFLAGS	=		-I./includes
-
-LDFLAGS		=		-L./lib/my -lmy
-
 NAME		=		pushswap
 
 all:	$(NAME)
