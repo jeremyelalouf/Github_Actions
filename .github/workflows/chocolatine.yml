@@ -23,7 +23,7 @@ jobs:
         run: |
           files=("*.o" "*.a" "*.so" "*.gcno" "*.gcda" "*.gcov" "#*#" "*~" "pain_au_chocolat")
           check=0
-          for i in ${!files[@]}; do 
+          for i in ${!files[@]}; do
             FILE=$(find . -name "${files[$i]}" | head -n 1)
             if [ -n "$FILE" ]; then
               echo "::error file=$FILE,line=1,col=5,endColumn=7,title=Unwanted file detected::$FILE"
