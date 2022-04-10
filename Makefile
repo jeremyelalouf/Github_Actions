@@ -8,7 +8,8 @@
 SRC			=		$(addsuffix .c,				\
 					main)						\
 
-SRC_TEST	=		tests/tests_unit.c			\
+SRC_TEST	=		tests/unit_tests.c			\
+					main.c
 
 OBJ			=		$(SRC:.c=.o)
 
@@ -49,9 +50,8 @@ fclean:	clean
 
 re:	fclean	all
 
-tests_run:	LDFLAGS += --coverage -lcriterion
 tests_run: fclean
-	$(CC) -o $(NAME_TEST) $(CPPFLAGS) $(CFLAGS) $(SRC_TEST)
+	$(CC) -o $(NAME_TEST) $(CPPFLAGS) $(CFLAGS) $(SRC_TEST) --coverage -lcriterion
 	./$(NAME_TEST)
 	gcovr --exclude tests
 	gcovr --branches --exclude tests
